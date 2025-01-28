@@ -6,4 +6,4 @@ class usuario:
         self.endereco = endereco
     
     def __str__(self):
-        return f"{self.nome} CPF: {self.cpf}"
+        return f"Nome: {self.nome} CPF: {self.cpf}"

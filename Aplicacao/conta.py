@@ -1,3 +1,4 @@
+from log import gerador_log
 class conta:
     agencia = "0001"
     def __init__(self,  conta, usuario):
@@ -9,7 +10,8 @@ class conta:
         self.LIMITE_VALOR = 500
         self.quantidade_saque=0
         self.historico_Conta=[]
-
+        
+    @gerador_log
     def deposito(self):
         print("Digite o valor que deseja depositar em sua conta: ")
         valor_Depositado = float(input())
@@ -18,12 +20,13 @@ class conta:
             print(f"Depositando {valor_Depositado} em sua conta...")
             self.saldo_Conta += valor_Depositado
             self.historico_Conta.append(f"Deposito - R$ {valor_Depositado}")
-            return f"Deposito realizado com sucesso, seu saldo atual é: {self.saldo_Conta}"
+            return f"Seu deposito de R$ {valor_Depositado} foi realizado com sucesso, seu saldo atual é: {self.saldo_Conta}"
         else:
             return "Valor Digitado inválido."
-
+    
+    @gerador_log
     def saque(self):
-        if(self.uantidade_saque >=self.LIMITE_SAQUE):
+        if(self.quantidade_saque >=self.LIMITE_SAQUE):
             return "Limite diário de saque atingido, tente novamente outro dia"
         
         if(self.saldo_Conta==0):
@@ -44,11 +47,11 @@ class conta:
             self.saldo_Conta-= valor_Sacado
             self.quantidade_saque +=1
             self.historico_Conta.append(f"Saque - R$ {valor_Sacado}")
-            return f"Saque realizado com sucesso, seu saldo atual é: R$ { self.saldo_Conta}"
+            return f"Saque de {valor_Sacado} foi realizado com sucesso, seu saldo atual é: R$ { self.saldo_Conta}"
         else:
-            return "Não foi possível realizar o saque por falta de saldo."
+            return f"Não foi possível realizar o saque por falta de saldo. Saldo atual: R$ { self.saldo_Conta}"
         
-
+    @gerador_log
     def extrato(self): 
         print("Extrato da conta: ")
         if(len(self.historico_Conta)==0):

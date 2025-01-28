@@ -1,3 +1,4 @@
+from log import gerador_log
 from conta import conta
 from funcoes import *
 idUsuario=0
@@ -64,6 +65,7 @@ def subMenu(contaSelecionada):
                 permanecer_subMenu = False
             case _:
                 print("Opção invalida")
+
 
 def menu():
     global permanecer_Menu
