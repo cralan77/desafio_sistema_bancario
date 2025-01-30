@@ -1,0 +1,8 @@
+historico_Conta=[[1, 2],[4, 3]]
+saldo_Conta = 0
+
+
+historico_Conta.append(["Deposito", 5])
+ 
+for item in historico_Conta:
+    print(item[1])

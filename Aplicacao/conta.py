@@ -19,7 +19,8 @@ class conta:
         if(valor_Depositado >0):
             print(f"Depositando {valor_Depositado} em sua conta...")
             self.saldo_Conta += valor_Depositado
-            self.historico_Conta.append(f"Deposito - R$ {valor_Depositado}")
+            self.deposito
+            self.historico_Conta.append(["Deposito", f"R$ {valor_Depositado}"])
             return f"Seu deposito de R$ {valor_Depositado} foi realizado com sucesso, seu saldo atual é: {self.saldo_Conta}"
         else:
             return "Valor Digitado inválido."
@@ -46,19 +47,26 @@ class conta:
             print(f"Realizando saque de {valor_Sacado}...")
             self.saldo_Conta-= valor_Sacado
             self.quantidade_saque +=1
-            self.historico_Conta.append(f"Saque - R$ {valor_Sacado}")
+            self.historico_Conta.append(["Saque" , f"R$ {valor_Sacado}"])
             return f"Saque de {valor_Sacado} foi realizado com sucesso, seu saldo atual é: R$ { self.saldo_Conta}"
         else:
             return f"Não foi possível realizar o saque por falta de saldo. Saldo atual: R$ { self.saldo_Conta}"
         
     @gerador_log
-    def extrato(self): 
+    def extrato(self, tipo): 
         print("Extrato da conta: ")
+
         if(len(self.historico_Conta)==0):
             return "Não houve movimentações."
+
         for linha in self.historico_Conta:
-            print(linha)
+            if tipo=='Completo':
+                print(f"{linha[0]} - {linha[1]}")
+            else:
+                if tipo==linha[0]:
+                    print(f"{linha[0]} - {linha[1]}")
         return f"Saldo atual: R$ {self.saldo_Conta}"
+             
 
     def __str__(self):
 

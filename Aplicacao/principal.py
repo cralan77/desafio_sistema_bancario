@@ -4,6 +4,7 @@ from funcoes import *
 idUsuario=0
 idConta=0
 permanecer_Menu=True
+permanecer_subMenu = False
 usuarios = {}
 contas = {}
 
@@ -33,6 +34,7 @@ def selecionarConta():
 
 #Submenu
 def subMenu(contaSelecionada):
+    global permanecer_subMenu
     permanecer_subMenu = True
     while permanecer_subMenu:    
         print("### MENU ###")
@@ -52,20 +54,51 @@ def subMenu(contaSelecionada):
             case "2":
                 print(contaSelecionada.saque())
             case "3":
-                print(contaSelecionada.extrato())
+                menuExtrato(contaSelecionada)
             case "4":
-                print("Retornando ao menu anterior...")
-                permanecer_subMenu = False
-                global permanecer_Menu
-                permanecer_Menu = True
-                menu()
+                retornoMenu()
             case "5":
-                print("Encerrando aplicação...")
-                permanecer_Menu = False
-                permanecer_subMenu = False
+                encerraAplicacao()
             case _:
                 print("Opção invalida")
 
+def menuExtrato(contaSelecionada):
+    print("\n")
+    print("### MENU ###")
+    print("1 - Extrato Completo")
+    print("2 - Apenas Depósitos")
+    print("3 - Apenas Saques")
+    print("4 - Voltar ao menu principal")
+    print("5 - Encerrar aplicação")
+
+    opcao_Selecionada = input()
+    print("\n")
+    match opcao_Selecionada:
+        case "1": 
+            contaSelecionada.extrato("Completo")
+        case "2":
+            contaSelecionada.extrato("Deposito")
+        case "3":
+            contaSelecionada.extrato("Saque")
+        case "4": 
+            retornoMenu()
+        case "5":
+            encerraAplicacao()
+
+def encerraAplicacao():
+    print("Encerrando aplicação...")
+    global permanecer_Menu
+    global permanecer_subMenu
+    permanecer_Menu = False
+    permanecer_subMenu = False
+
+def retornoMenu():
+    print("Retornando ao menu principal...")
+    global permanecer_subMenu
+    permanecer_subMenu = False
+    global permanecer_Menu
+    permanecer_Menu = True
+    menu()
 
 def menu():
     global permanecer_Menu
@@ -125,8 +158,7 @@ def menu():
                     selecionarConta()
                     permanecer_Menu = False
             case "4":
-                print("Encerrando programa...")
-                permanecer_Menu = False
+                encerraAplicacao()
             case _:
                 print("Opção invalida")
 
