@@ -36,7 +36,8 @@ def selecionarConta():
 def subMenu(contaSelecionada):
     global permanecer_subMenu
     permanecer_subMenu = True
-    while permanecer_subMenu:    
+    while permanecer_subMenu:
+        print("\n")    
         print("### MENU ###")
         print("Digite a opção desejada: ")
         print("1 - Depositar")
