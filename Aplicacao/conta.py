@@ -67,7 +67,7 @@ class conta:
             print(f"Realizando saque de {valor_Sacado}...")
             self.saldo_Conta-= valor_Sacado
             self.__valida_quantidade_transacoes__(realizou_transacao=True)
-            self.historico_Conta.append(["Saque" ,{valor_Sacado}, datetime.now()])
+            self.historico_Conta.append(["Saque" ,valor_Sacado, datetime.now()])
             return f"Saque de {valor_Sacado} foi realizado com sucesso, seu saldo atual é: R$ { self.saldo_Conta}"
         else:
             return f"Não foi possível realizar o saque por falta de saldo. Saldo atual: R$ { self.saldo_Conta}"

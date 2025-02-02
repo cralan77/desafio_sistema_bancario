@@ -1,0 +1,6 @@
+
+2025-02-02 09:16:37.690692 - cadastrar_usuario - Nome:  CPF: 683799
+2025-02-02 09:16:42.924859 - cadastrar_conta - Agencia: 0001 Conta: 1 Usuario: Nome:  CPF: 683799
+2025-02-02 09:16:49.821839 - deposito - Seu deposito de R$ 656.0 foi realizado com sucesso, seu saldo atual é: 656.0
+2025-02-02 09:16:56.359379 - saque - Saque de 56.0 foi realizado com sucesso, seu saldo atual é: R$ 600.0
+2025-02-02 09:17:05.549526 - extrato - Saldo atual: R$ 600.0
